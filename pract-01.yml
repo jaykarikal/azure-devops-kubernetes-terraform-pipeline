@@ -20,7 +20,7 @@ jobs:
   - script: echo Hello, world for job2!
     displayName: 'Run a one-line script'
 - job: job3
-  dependson: job2
+  dependsOn: job2
   steps:
   - script: echo Hello, world for job3!
     displayName: 'Run a one-line script'
