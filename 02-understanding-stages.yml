@@ -27,8 +27,8 @@ stages:
     - bash: echo testDeployJob
 - stage: prodDeploy
   dependsOn:
-  - DevDeployJob
-  - testDeployJob
+  - DevDeploy
+  - testDeploy
   jobs:
   - job: prodDeployJob
     steps:
