@@ -10,32 +10,39 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo Build FirstJob
-  - job: SecondJob
-    steps:
-    - bash: echo Build SecondJob
-- stage: DevDeploy
-  variables:
-    environment: Dev
-  dependsOn: Build
-  jobs:
-  - job: DevDeployJob
-    steps:
-    - bash: echo DevDeployJob
-- stage: testDeploy
-  variables:
-    environment: test
-  dependsOn: Build
-  jobs:
-  - job: testDeployJob
-    steps:
-    - bash: echo testDeployJob
-- stage: prodDeploy
-  variables:
-    environment: prod
-  dependsOn:
-  - DevDeploy
-  - testDeploy
-  jobs:
-  - job: prodDeployJob
-    steps:
-    - bash: echo prodDeployJob
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(BuildID)
+    - bash: echo $(SourceBranchName)
+    - bash: echo $(SourceDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+#   - job: SecondJob
+#     steps:
+#     - bash: echo Build SecondJob
+# - stage: DevDeploy
+#   variables:
+#     environment: Dev
+#   dependsOn: Build
+#   jobs:
+#   - job: DevDeployJob
+#     steps:
+#     - bash: echo DevDeployJob
+# - stage: testDeploy
+#   variables:
+#     environment: test
+#   dependsOn: Build
+#   jobs:
+#   - job: testDeployJob
+#     steps:
+#     - bash: echo testDeployJob
+# - stage: prodDeploy
+#   variables:
+#     environment: prod
+#   dependsOn:
+#   - DevDeploy
+#   - testDeploy
+#   jobs:
+#   - job: prodDeployJob
+#     steps:
+#     - bash: echo prodDeployJob
