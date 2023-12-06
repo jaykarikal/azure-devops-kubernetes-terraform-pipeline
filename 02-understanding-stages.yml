@@ -11,7 +11,7 @@ stages:
     steps:
     - bash: echo Build FirstJob
     - bash: echo $(Build.BuildNumber)
-    - bash: echo $(BuildID)
+    - bash: echo $(BuildId)
     - bash: echo $(SourceBranchName)
     - bash: echo $(SourceDirectory)
     - bash: echo $(System.DefaultWorkingDirectory)
