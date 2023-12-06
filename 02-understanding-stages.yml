@@ -14,18 +14,24 @@ stages:
     steps:
     - bash: echo Build SecondJob
 - stage: DevDeploy
+  variables:
+    environment: Dev
   dependsOn: Build
   jobs:
   - job: DevDeployJob
     steps:
     - bash: echo DevDeployJob
 - stage: testDeploy
+  variables:
+    environment: test
   dependsOn: Build
   jobs:
   - job: testDeployJob
     steps:
     - bash: echo testDeployJob
 - stage: prodDeploy
+  variables:
+    environment: prod
   dependsOn:
   - DevDeploy
   - testDeploy
