@@ -11,7 +11,7 @@ stages:
   jobs:
   - job: devdeployjob
     steps:
-    - script: echo $(environment)devdeploy!
+    - script: echo $(environment)deploy!
       displayName: 'Run a one-line script first'
 - stage: QAdeploy
   variables:
@@ -20,7 +20,7 @@ stages:
   jobs:
   - job: QAdeployjob
     steps:
-    - script: echo $(environment)QAdeploy!
+    - script: echo $(environment)deploy!
       displayName: 'Run a one-line script first'
 - stage: proddeploy
   variables:
@@ -29,7 +29,7 @@ stages:
   jobs:
   - job: proddeployjob
     steps:
-    - script: echo $(environment)proddeploy!
+    - script: echo $(environment)deploy!
       displayName: 'Run a one-line script first'
 
 
