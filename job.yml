@@ -18,4 +18,9 @@ jobs:
   steps:
   - script: echo Hello, world!
     displayName: 'Run a one-line script second'
+- job: thirdjob
+  dependsOn: firstjob
+  steps:
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script third'
 
