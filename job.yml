@@ -6,31 +6,38 @@ pool:
 
 stages:
 - stage: build
-  jobs:
-  - job: firstjob
-    steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script first'
+  variables:
+    environment : build
+    jobs:
+    - job: firstjob
+      steps:
+      - script: echo $(environment)build!
 - stage: dev
+  variables:
+    environment : dev
   dependsOn: build
   jobs:
   - job: devdeployjob
     steps:
-    - script: echo devdeploy!
+    - script: echo $(environment)dev!
       displayName: 'Run a one-line script first'
 - stage: QA
+  variables:
+    environment : QA
   dependsOn: dev
   jobs:
   - job: QAdeployjob
     steps:
-    - script: echo QAdeploy!
+    - script: echo $(environment)QA!
       displayName: 'Run a one-line script first'
 - stage: prod
+  variables:
+    environment : prod
   dependsOn: QA
   jobs:
   - job: proddeployjob
     steps:
-    - script: echo proddeploy!
+    - script: echo $(environment)prod!
       displayName: 'Run a one-line script first'
 
 
