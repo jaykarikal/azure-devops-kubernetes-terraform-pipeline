@@ -5,39 +5,39 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: build
+- stage: builddeploy
   variables:
     environment : build
     jobs:
     - job: firstjob
       steps:
-      - script: echo $(environment)build!
-- stage: dev
+      - script: echo $(environment)builddeploy!
+- stage: devdeploy
   variables:
     environment : dev
   dependsOn: build
   jobs:
   - job: devdeployjob
     steps:
-    - script: echo $(environment)dev!
+    - script: echo $(environment)devdeploy!
       displayName: 'Run a one-line script first'
-- stage: QA
+- stage: QAdeploy
   variables:
     environment : QA
   dependsOn: dev
   jobs:
   - job: QAdeployjob
     steps:
-    - script: echo $(environment)QA!
+    - script: echo $(environment)QAdeploy!
       displayName: 'Run a one-line script first'
-- stage: prod
+- stage: proddeploy
   variables:
     environment : prod
   dependsOn: QA
   jobs:
   - job: proddeployjob
     steps:
-    - script: echo $(environment)prod!
+    - script: echo $(environment)proddeploy!
       displayName: 'Run a one-line script first'
 
 
