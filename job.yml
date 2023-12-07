@@ -7,29 +7,38 @@ pool:
 stages:
 - stage: devdeploy
   variables:
-    case : dev
+    case : 01
+    environment: dev
   jobs:
   - job: devdeployjob
     steps:
-    - script: echo $(case)deploy!
+    - script: |
+        echo $(case)deploy!
+        echo $(environment)!
       displayName: 'Run a one-line script first'
 - stage: QAdeploy
   variables:
-    case : QA
+    case : 02
+    environment: QA
   dependsOn: devdeploy
   jobs:
   - job: QAdeployjob
     steps:
-    - script: echo $(case)deploy!
+    - script: 
+        echo $(case)deploy!
+        echo $(environment)!
       displayName: 'Run a one-line script first'
 - stage: proddeploy
   variables:
-    case : prod
+    case : 03
+    environment: prod
   dependsOn: QAdeploy
   jobs:
   - job: proddeployjob
-    steps:
-    - script: echo $(case)deploy!
+    steps: 
+    - script: |
+        echo $(case)deploy!
+        echo $(environment)!
       displayName: 'Run a one-line script first'
 
 
