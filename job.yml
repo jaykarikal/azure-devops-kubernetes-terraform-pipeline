@@ -18,18 +18,21 @@ stages:
 - stage: dev
   jobs:
   - job: devdeployjob
+    dependsOn: build
     steps:
     - script: echo devdeploy!
       displayName: 'Run a one-line script first'
 - stage: QA
   jobs:
   - job: QAdeployjob
+    dependsOn: dev
     steps:
     - script: echo QAdeploy!
       displayName: 'Run a one-line script first'
 - stage: prod
   jobs:
   - job: proddeployjob
+    dependsOn: QA
     steps:
     - script: echo proddeploy!
       displayName: 'Run a one-line script first'
