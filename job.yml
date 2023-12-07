@@ -5,17 +5,9 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: builddeploy
-  variables:
-    environment : build
-    jobs:
-    - job: firstjob
-      steps:
-      - script: echo $(environment)builddeploy!
 - stage: devdeploy
   variables:
     environment : dev
-  dependsOn: build
   jobs:
   - job: devdeployjob
     steps:
